@@ -54,6 +54,10 @@
   <!--
 	//定义游戏状态
 	var beginflag=false;
+	//背景色
+	var bgColor='#333333';
+	//图形色
+	var txColor="#00cc00";
 	//定义图形
 	var tx1=[14,15,25,16];//T形
 	var tx2=[15,25,35,45];//I形
@@ -90,17 +94,25 @@
 		$(".btn4ef").html("开始");
 	}
 	function graph(){
-		if(typeof(txaryOld)!="undefined"&&0!=txaryOld.length){
-			$(txaryOld).each(function(num,tempKey){
-				$("#"+tempKey).css("background-color","#333333");
-			});
-		}
 		var tempArr=new Array();
 		var overflag = false;
+		if(typeof(txaryOld)!="undefined"&&0!=txaryOld.length){
+			$(txaryOld).each(function(num,tempKey){
+				if(!checkExist(tempKey,txary)){
+					$("#"+tempKey).css("background-color",bgColor);
+				}
+			});
+		}
 		$(txary).each(function(num,tempKey){
-			$("#"+tempKey).css("background-color","#00cc00");
+			if(typeof(txaryOld)!="undefined"&&0!=txaryOld.length){
+				if(!checkExist(tempKey,txaryOld)){
+					$("#"+tempKey).css("background-color",txColor);
+				}
+			}else{
+					$("#"+tempKey).css("background-color",txColor);
+			}
 			tempArr[num] = tempKey+10;
-			if(110<tempArr[num]){
+			if(100<tempArr[num]){
 				overflag=true;
 			}
 		});
@@ -114,6 +126,15 @@
 	function suijituxing(){
 		var random =parseInt((10*Math.random())/5);
 		return tuxingLib[random];
+	}
+	function checkExist(val,pramArray){
+		var existFlag=false;
+		$(pramArray).each(function(num,tempVal){
+			if(tempVal==val){
+				existFlag=true;
+			}
+		});
+		return existFlag;
 	}
   //-->
   </script>
@@ -202,6 +223,17 @@
 				<td id="79">&nbsp;</td>
 			</tr>
 			<tr>
+				<td id="81">&nbsp;</td>
+				<td id="82">&nbsp;</td>
+				<td id="83">&nbsp;</td>
+				<td id="84">&nbsp;</td>
+				<td id="85">&nbsp;</td>
+				<td id="86">&nbsp;</td>
+				<td id="87">&nbsp;</td>
+				<td id="88">&nbsp;</td>
+				<td id="89">&nbsp;</td>
+			</tr>
+			<tr>
 				<td id="91">&nbsp;</td>
 				<td id="92">&nbsp;</td>
 				<td id="93">&nbsp;</td>
@@ -211,17 +243,6 @@
 				<td id="97">&nbsp;</td>
 				<td id="98">&nbsp;</td>
 				<td id="99">&nbsp;</td>
-			</tr>
-			<tr>
-				<td id="101">&nbsp;</td>
-				<td id="102">&nbsp;</td>
-				<td id="103">&nbsp;</td>
-				<td id="104">&nbsp;</td>
-				<td id="105">&nbsp;</td>
-				<td id="106">&nbsp;</td>
-				<td id="107">&nbsp;</td>
-				<td id="108">&nbsp;</td>
-				<td id="109">&nbsp;</td>
 			</tr>
 		</table>
 	</div>
