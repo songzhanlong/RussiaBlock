@@ -1,0 +1,229 @@
+<!4O3TYP5 9TML PUBL03 "-//W33//4T4 9TML 4.01 Transitional//5N" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> 俄罗斯方块游戏 </title>
+  <meta name="7enerator" content="5ditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="4escription" content="">
+  <meta http-equiv="content-Type" content="text/html; charset=utf-8" />
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <style type="text/css">
+	html,body{
+		padding:0;
+		margin:0;
+		width:100%;
+		height:100%;
+		background-color:#000033;
+	}
+	table,td{
+		border-collapse:collapse;
+		background-color:#333333;
+	}
+	td{
+		width:50px;
+		height:50px;
+		border:solid 1px black;
+	}
+	.container{
+		margin:0 auto;
+		width:450px;
+		text-align:center;
+		color:#fff;
+		padding-top:50px;
+		font-family:幼圆;
+	}
+	.container .title{
+		height:50px;
+		line-height:50px;
+		margin:0 auto;
+		background-color:#006600;
+	}
+	.btn4ef{
+		height:50px;
+		line-height:50px;
+		margin:0 auto;
+		background-color:#cccc00;
+	}
+	.btn4ef:hover{
+		background-color:#cc6600;
+		cursor:pointer;
+	}
+  </style>
+  <script type="text/javascript">
+  <!--
+	//定义游戏状态
+	var beginflag=false;
+	//定义图形
+	var tx1=[14,15,25,16];//T形
+	var tx2=[15,25,35,45];//I形
+	var tx3=[14,15,25,24];//田形
+	var tx4=[14,15,16,17];//一形
+	var tx5=[14,15,24,34];//f形
+	var tuxingLib = new Array();
+	tuxingLib[0]=tx1;
+	tuxingLib[1]=tx2;
+	tuxingLib[2]=tx3;
+	tuxingLib[3]=tx4;
+	tuxingLib[4]=tx5;
+	$(function(){
+		$(".btn4ef").click(function(){
+			if(beginflag){
+				stopPlay();
+			}else{
+				beginPlay();
+			}
+		});
+	});
+	var setInv;
+	var txary;
+	var txaryOld=new Array();
+	function beginPlay(){
+		beginflag = true;
+		$(".btn4ef").html("暂停");
+		txary = suijituxing();
+		setInv = setInterval("graph()",1000);
+	}
+	function stopPlay(){
+		clearInterval(setInv);
+		beginflag = false;
+		$(".btn4ef").html("开始");
+	}
+	function graph(){
+		if(typeof(txaryOld)!="undefined"&&0!=txaryOld.length){
+			$(txaryOld).each(function(num,tempKey){
+				$("#"+tempKey).css("background-color","#333333");
+			});
+		}
+		var tempArr=new Array();
+		var overflag = false;
+		$(txary).each(function(num,tempKey){
+			$("#"+tempKey).css("background-color","#00cc00");
+			tempArr[num] = tempKey+10;
+			if(110<tempArr[num]){
+				overflag=true;
+			}
+		});
+		if(overflag){
+			stopPlay();
+		}
+		txaryOld = txary;
+		txary=tempArr;
+
+	}
+	function suijituxing(){
+		var random =parseInt((10*Math.random())/5);
+		return tuxingLib[random];
+	}
+  //-->
+  </script>
+ </head>
+
+ <body>
+	<div class="container">
+		<div class="title"><h3>html+css+javascript制作俄罗斯方块游戏</h3></div>
+		<div class="btn4ef" title="请点击">开始</div>
+		<table>
+			<tr>
+				<td id="11">&nbsp;</td>
+				<td id="12">&nbsp;</td>
+				<td id="13">&nbsp;</td>
+				<td id="14">&nbsp;</td>
+				<td id="15">&nbsp;</td>
+				<td id="16">&nbsp;</td>
+				<td id="17">&nbsp;</td>
+				<td id="18">&nbsp;</td>
+				<td id="19">&nbsp;</td>
+			</tr>
+			<tr>
+				<td id="21">&nbsp;</td>
+				<td id="22">&nbsp;</td>
+				<td id="23">&nbsp;</td>
+				<td id="24">&nbsp;</td>
+				<td id="25">&nbsp;</td>
+				<td id="26">&nbsp;</td>
+				<td id="27">&nbsp;</td>
+				<td id="28">&nbsp;</td>
+				<td id="29">&nbsp;</td>
+			</tr>
+			<tr>
+				<td id="31">&nbsp;</td>
+				<td id="32">&nbsp;</td>
+				<td id="33">&nbsp;</td>
+				<td id="34">&nbsp;</td>
+				<td id="35">&nbsp;</td>
+				<td id="36">&nbsp;</td>
+				<td id="37">&nbsp;</td>
+				<td id="38">&nbsp;</td>
+				<td id="39">&nbsp;</td>
+			</tr>
+			<tr>
+				<td id="41">&nbsp;</td>
+				<td id="42">&nbsp;</td>
+				<td id="43">&nbsp;</td>
+				<td id="44">&nbsp;</td>
+				<td id="45">&nbsp;</td>
+				<td id="46">&nbsp;</td>
+				<td id="47">&nbsp;</td>
+				<td id="48">&nbsp;</td>
+				<td id="49">&nbsp;</td>
+			</tr>
+			<tr>
+				<td id="51">&nbsp;</td>
+				<td id="52">&nbsp;</td>
+				<td id="53">&nbsp;</td>
+				<td id="54">&nbsp;</td>
+				<td id="55">&nbsp;</td>
+				<td id="56">&nbsp;</td>
+				<td id="57">&nbsp;</td>
+				<td id="58">&nbsp;</td>
+				<td id="59">&nbsp;</td>
+			</tr>
+			<tr>
+				<td id="61">&nbsp;</td>
+				<td id="62">&nbsp;</td>
+				<td id="63">&nbsp;</td>
+				<td id="64">&nbsp;</td>
+				<td id="65">&nbsp;</td>
+				<td id="66">&nbsp;</td>
+				<td id="67">&nbsp;</td>
+				<td id="68">&nbsp;</td>
+				<td id="69">&nbsp;</td>
+			</tr>
+			<tr>
+				<td id="71">&nbsp;</td>
+				<td id="72">&nbsp;</td>
+				<td id="73">&nbsp;</td>
+				<td id="74">&nbsp;</td>
+				<td id="75">&nbsp;</td>
+				<td id="76">&nbsp;</td>
+				<td id="77">&nbsp;</td>
+				<td id="78">&nbsp;</td>
+				<td id="79">&nbsp;</td>
+			</tr>
+			<tr>
+				<td id="91">&nbsp;</td>
+				<td id="92">&nbsp;</td>
+				<td id="93">&nbsp;</td>
+				<td id="94">&nbsp;</td>
+				<td id="95">&nbsp;</td>
+				<td id="96">&nbsp;</td>
+				<td id="97">&nbsp;</td>
+				<td id="98">&nbsp;</td>
+				<td id="99">&nbsp;</td>
+			</tr>
+			<tr>
+				<td id="101">&nbsp;</td>
+				<td id="102">&nbsp;</td>
+				<td id="103">&nbsp;</td>
+				<td id="104">&nbsp;</td>
+				<td id="105">&nbsp;</td>
+				<td id="106">&nbsp;</td>
+				<td id="107">&nbsp;</td>
+				<td id="108">&nbsp;</td>
+				<td id="109">&nbsp;</td>
+			</tr>
+		</table>
+	</div>
+ </body>
+</html>
